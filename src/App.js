@@ -1,16 +1,23 @@
 import './App.css';
-import FullPage from './Components/FullPage/FullPage';
+import HomePage from './Components/HomePage/Home.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProjectDetails from './Components/ProjectDetails/ProjectDetails';
+import Navbar from './Components/Navbar/Navbar';
+import Footer from './Components/Footer/Footer';
+import WhatsAppButton from './Components/WhatsAppButton/WhatsAppButton';
+
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Routes>
-              <Route exact path='/' element={<FullPage />} />
-          <Route path='/project/:name' element={<ProjectDetails />} />
+    return (
+          <div className="App">
+            <Router>
+              <Navbar />
+              <Routes>
+                <Route exact path='/' element={<HomePage />} />
+          <Route path='/proyecto/:nombre' element={<ProjectDetails />} />
   </Routes>
-      </Router>
+        <WhatsAppButton />
+          <Footer />
+  </Router>
   </div>
   );
 }
