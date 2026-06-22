@@ -13,14 +13,14 @@ const Loading = ({hide}) => {
                       animate={{ width: '70%' , marginRight:'10px'}}
                       transition={{...transition}}
                       className="left">
-                <h1>Nourhan</h1>
+                <h1>Alex</h1>
               </motion.div>
                   <motion.div
                       initial={{ width: '9%' }}
                       animate={{ width: '53%' }}
                       transition={{...transition}}
                       className="right">
-                  <h1>Shakir</h1>
+                  <h1>Argüello</h1>
               </motion.div>  
           </div>
           <div className="bar">

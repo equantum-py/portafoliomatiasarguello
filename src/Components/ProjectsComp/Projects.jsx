@@ -25,14 +25,14 @@ const Projects = () => {
             data-id={project.name}
           >
             <img
-              className={`${project.name === 'Exhibition Hall' ? 'bright' : ''}`}
+              className={`${project.name === 'Control de Calidad' ? 'bright' : ''}`}
               src={project.shot1}
               alt={project.name}
             />
 
             <div
               className={`back ${
-                project.name === 'Pavilion For Future Science'
+                project.name === 'Pinturas Arquitectónicas'
                   ? 'moveLeft'
                   : ''
               }`}
@@ -40,7 +40,7 @@ const Projects = () => {
 
             <div
               className={`details ${
-                project.name === 'Pavilion For Future Science'
+                project.name === 'Pinturas Arquitectónicas'
                   ? 'moveLeft'
                   : ''
               }`}
@@ -56,7 +56,7 @@ const Projects = () => {
                 to={`/project/${project.name}`}
                 className="btn"
               >
-                Learn More
+                Ver más
               </Link>
             </div>
           </motion.div>

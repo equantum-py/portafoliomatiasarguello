@@ -10,7 +10,7 @@ const EDEX = () => {
 
     const [showMore, setShowMore] = useState(false)
     const [height, setHeight] = useState('')
-    const [showText, setShowText] = useState('Show More')
+    const [showText, setShowText] = useState('Mostrar más')
     const transition = {type:'spring', duration: 3}
     const appearanceHandle = () => {
         if (!secAppear) {
@@ -33,11 +33,11 @@ const EDEX = () => {
         if (!showMore) {
             setShowMore(true)
             setHeight('height')
-            setShowText('Show Less')
+            setShowText('Mostrar menos')
         } else {
             setShowMore(false)
             setHeight('')
-            setShowText('Show More')
+            setShowText('Mostrar más')
         }
     }
     return (

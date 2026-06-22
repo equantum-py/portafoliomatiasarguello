@@ -9,11 +9,11 @@ const FWL = () => {
   return (
       <>
         <Home />
-      <Heading head='Education & Experience' id="edex"/>
+        <Heading head='Educación y Experiencia' id="edex"/>
     <EDEX />
-      <Heading head='Projects' id="projects" />
+        <Heading head='Proyectos' id="projects" />
       <Projects />
-      <Heading head='Skills & Resume' id='SR' />
+        <Heading head='Habilidades' id='SR' />
       <SR />
       <Footer />
       </>

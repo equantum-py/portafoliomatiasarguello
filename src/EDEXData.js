@@ -1,55 +1,49 @@
 export const eddata = [
     {
         education: 'Urban Design & Urban Planning',
-        sub:'Alexandria University',
-        date: 'JUN 2022 - Present'
+        sub:'Instituto de Construcción y Gestión',
+        date: '2022 - Presente'
     },
     {
-        education: 'Architecture Department',
-        sub:'Alexandria University',
-        date: 'AUG 2019 - DEC 2022'
+        education: 'Departamento de Arquitectura',
+        sub:'Instituto de Construcción y Gestión',
+        date: '2019 - 2022'
     },
     {
-        education: 'Faculty of Engineering',
-        sub:'Alexandria University',
-        date: 'AUG 2018 - JUL 2019'
+        education: 'Facultad de Ingeniería',
+        sub:'Instituto de Construcción y Gestión',
+        date: '2018 - 2019'
     },
     {
-        education: 'High School',
-        date: 'AUG 2015 - JUL 2018'
+        education: 'Bachillerato en Ciencias y Tecnología',
+        date: '2015 - 2018'
     }
 ]
 
 export const exdata = [
     {
-        experience: 'JIWAR ARCTECTS Training',
-        date: 'AUG 2022 - SEP 2022'
+        experience: 'Supervisión de obras residenciales',
+        sub:'Coordinación de campo y verificación de procesos',
+        date: '2023 - Presente'
     },
     {
-        experience: 'Dewan Award for Architecture',
-        sub:'Honourable Mentions: Certificate and invitation to attend the annual ceremony',
-        date: 'AUG 2022 - SEP 2022'
+        experience: 'Gestión de calidad en construcción',
+        sub:'Inspecciones de materiales y controles de cumplimiento',
+        date: '2022 - 2023'
     },
     {
-        experience: 'Azbakia Kiosks Competition',
-        sub:'Honourable Mentions: Certificate',
-        date: 'JUL 2022 - AUG 2022'
-    },
-    {
-        experience: 'Ezbet Hegazy Development Proposal',
-        date: 'SEP 2022 - OCT 2022'
-    },
-    {
-        experience: 'Othman Ahmed Othman',
-        sub:'Water Purification Plant',
-        date: 'AUG 2021 - SEP 2021'
-    },
-    {
-        experience: 'University',
-        sub:'Project of making human sciences complex accessible for people with special needs.',
+        experience: 'Planificación y seguimiento de proyectos',
+        sub:'Elaboración de cronogramas y coordinación de subcontratistas',
         date: '2021 - 2022'
     },
     {
-        experience: 'Studio 34 training'
+        experience: 'Dirección técnica de obra',
+        sub:'Supervisión de ejecución y gestión de recursos',
+        date: '2020 - 2021'
+    },
+    {
+        experience: 'Asistente de planificación',
+        sub:'Análisis de costos y control de inventarios',
+        date: '2019 - 2020'
     }
 ]

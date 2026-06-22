@@ -43,9 +43,9 @@ const SR = () => {
           </motion.svg>
         </div>
         <div className="right">
-          <h3>If you find that interesting</h3>
-          <a href={Resume} download="Resume" target='_blank' rel='noreferrer'>
-            <button className='btn'>Download My Resume</button>
+          <h3>¿Te interesa mi perfil?</h3>
+          <a href={Resume} download="Curriculum_Vitae" target='_blank' rel='noreferrer'>
+            <button className='btn'>Descargar Curriculum Vitae</button>
           </a>
           <motion.svg
             initial={{ right: '-7rem', bottom: '-4rem' }}
