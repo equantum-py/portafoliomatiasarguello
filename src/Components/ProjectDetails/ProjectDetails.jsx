@@ -95,7 +95,7 @@ const ProjectDetails = () => {
       </div>
       <footer>
         <div className="content">
-          <Link to='/Architecture-Engineer-Portfolio-Website'><h4>Home</h4></Link>
+          <Link to='/'><h4>Home</h4></Link>
           <div className="icons">
                   <a href="https://www.facebook.com/nourhan.shakir7" target='_blank' rel='noreferrer'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-facebook" viewBox="0 0 16 16">
