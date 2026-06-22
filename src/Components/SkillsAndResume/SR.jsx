@@ -1,4 +1,4 @@
-import React from 'react'
+himport React from 'react'
 import './SR.css'
 import { Skills } from '../../SR'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
@@ -6,12 +6,12 @@ import 'react-circular-progressbar/dist/styles.css';
 import { motion } from 'framer-motion';
 import Resume from '../../Assets/Resume/Resume.pdf'
 const SR = () => {
-    
+    h
     return (
       <>
       <div className="sr pad space">
           <div className="left">
-              <ul className='skills' on>
+              <ul className='skills' 
                   {Skills.map((skill, i) => {
                       return (
                           <li key={i}>
