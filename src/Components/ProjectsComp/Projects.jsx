@@ -20,8 +20,7 @@ const Projects = () => {
                       <div className={`details ${project.name ==='Pavilion For Future Science' ? 'moveLeft': '' }`}>
                           <h3 className='name'>{project.name}</h3>
                           <p>{project.concept.slice(0, 250).trim()}{project.concept.length > 250 ? '...' :''}</p>
-                          <Link to={`/Architecture-Engineer-Portfolio-Website/project/${project.name}`} className='btn'>Learn More</Link>
-                      </div>
+                                <Link to={`/project/${project.name}`} className='btn'>Learn More</Link>Link></Link>
                   </motion.div>
               )
           })}
