@@ -10,6 +10,7 @@ function App() {
               <Route exact path='/' element={<FullPage />} />
           <Route path='/project/:name' element={<ProjectDetails />} />
       </Router>
+  </Router>
     </div>
   );
 }
