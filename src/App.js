@@ -9,9 +9,8 @@ function App() {
         <Routes>
               <Route exact path='/' element={<FullPage />} />
           <Route path='/project/:name' element={<ProjectDetails />} />
+  </Routes>
       </Router>
-  </Router>
-    </div>
   );
 }
 
