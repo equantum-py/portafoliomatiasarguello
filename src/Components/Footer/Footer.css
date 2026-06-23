@@ -1,105 +1,76 @@
-footer {
-  background-color: var(--dark-brown);
-  text-align: center;
-  margin-top: 5rem;
+.footer {
+  background: #1b5e75;
+  color: #ffffff;
+  padding: 54px 24px 28px;
 }
-.footerContent {
-  padding: 70px 120px 120px 70px;
-  color: #fff;
+
+.footer-content {
+  max-width: 1180px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 34px;
+  align-items: flex-start;
 }
 
-footer h4 {
-  color: #fff;
-  font-size: 40px;
+.footer h2 {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 8px;
 }
 
-footer p {
-  font-size: 28px;
-  color: #fff;
+.footer p {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
 }
 
-footer .left,
-footer .right {
+.footer a {
+  color: #ffffff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #f28c28;
+}
+
+.footer-contact {
+  text-align: right;
+}
+
+.footer-icons {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.footer-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: inline-flex;
   align-items: center;
-  height: 150px;
-}
-
-.icons {
-  display: flex;
-  justify-content: space-between;
-  width: 36%;
-}
-
-.icons a svg {
-  font-size: 40px;
-  transition: all 0.2s linear;
-  fill: #fff;
-  transform: scale(1.6);
+  justify-content: center;
 }
 
 .copy {
-  font-size: 17px;
-  font-weight: lighter;
-  color: #ffffffb0;
+  max-width: 1180px;
+  margin: 38px auto 0;
+  font-size: 0.92rem;
 }
 
-.copy a {
-  color: #ffffffb0;
-  font-weight: 700;
-  transition: all 0.3s linear;
-  text-decoration: underline;
-}
-
-.copy a:hover {
-  color: #fff;
-}
-
-.icons a:first-child:hover svg {
-  fill: #4267b2;
-}
-.icons a:nth-child(2):hover svg {
-  fill: #0072b1;
-}
-.icons a:last-child:hover svg {
-  fill: #25d366;
-}
-
-@media (max-width: 768px) {
-  .footerContent {
-    flex-direction: column-reverse;
-    justify-content: unset;
-    padding: 70px 30px;
-    row-gap: 50px;
-  }
-  .footerContent h4 {
-    font-size: 30px;
+@media (max-width: 720px) {
+  .footer-content {
+    flex-direction: column;
   }
 
-  footer p {
-    font-size: 20px;
+  .footer-contact {
+    text-align: left;
   }
-  .icons {
-    width: 35%;
-  }
-  .copy {
-    font-size: 14px;
-  }
-}
 
-@media (min-width: 759px) and (max-width: 992px) {
-  .footerContent {
-    padding: 70px 51px 120px 70px;
-  }
-  footer h4 {
-    font-size: 30px;
-  }
-  footer p {
-    font-size: 20px;
+  .footer-icons {
+    justify-content: flex-start;
   }
 }
