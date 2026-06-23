@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import profileImage from '../../Assets/Images/pngtree-vector-business-men-icon-png-image_925963.jpg';
+import profileImage from '../../Assets/Images/matias-arguello.jpg';
 import resumePdf from '../../Assets/Resume/Resume.pdf';
 
 const whatsappUrl = 'https://wa.me/595991246806?text=Hola%20Mat%C3%ADas%2C%20vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20tu%20experiencia%20profesional.';
