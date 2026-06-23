@@ -241,6 +241,10 @@
   display: block;
   object-fit: cover;
   width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
 }
 
 .project-body {
