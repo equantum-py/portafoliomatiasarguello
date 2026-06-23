@@ -18,8 +18,7 @@
   position: absolute;
   right: 0;
   top: 128px;
-  max-width: 420px;
-  width: 34vw;
+  width: min(34vw, 420px);
 }
 
 .hero-section,
@@ -134,10 +133,7 @@
   border: 1px solid rgba(27, 94, 117, 0.18);
   border-radius: 30px;
   content: '';
-  bottom: -18px;
-  left: 18px;
-  right: -18px;
-  top: 18px;
+  inset: 18px -18px -18px 18px;
   position: absolute;
   z-index: 0;
 }
