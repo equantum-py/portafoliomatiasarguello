@@ -7,18 +7,18 @@ import Footer from './Components/Footer/Footer';
 import WhatsAppButton from './Components/WhatsAppButton/WhatsAppButton';
 
 function App() {
-    return (
-          <div className="App">
-            <Router>
-              <Navbar />
-              <Routes>
-                <Route exact path='/' element={<HomePage />} />
-          <Route path='/proyecto/:nombre' element={<ProjectDetails />} />
-  </Routes>
+  return (
+    <div className="App">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/proyecto/:nombre" element={<ProjectDetails />} />
+        </Routes>
         <WhatsAppButton />
-          <Footer />
-  </Router>
-  </div>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
