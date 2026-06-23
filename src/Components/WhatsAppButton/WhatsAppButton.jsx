@@ -4,7 +4,7 @@ import './WhatsAppButton.css';
 
 const WhatsAppButton = () => {
   const phoneNumber = '595991246806';
-  const message = 'Hola Matías, vi tu portfolio y me gustaría solicitar un presupuesto.';
+  const message = 'Hola Matías, vi tu portfolio y me gustaría conocer más sobre tu experiencia profesional.';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
@@ -13,8 +13,8 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-button"
-      title="Contactar por WhatsApp"
-      aria-label="Contactar por WhatsApp"
+      title="Contactar a Matías por WhatsApp"
+      aria-label="Contactar a Matías por WhatsApp"
     >
       <FaWhatsapp aria-hidden="true" />
     </a>
