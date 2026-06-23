@@ -1,6 +1,6 @@
-import React from 'react';
+himport React from 'react';
 import './Home.css';
-import profileImage from '../../Assets/Images/pngtree-vector-business-men-icon-png-image_925963.jpg';
+import profileImage from '../../Assets/Images/matias-arguello.jpg';
 import projectImage from '../../Assets/Images/Screenshot.png';
 import resumePdf from '../../Assets/Resume/Resume.pdf';
 
