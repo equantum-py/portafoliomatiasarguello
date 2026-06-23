@@ -1,4 +1,4 @@
-himport React from 'react';
+import React from 'react';
 import './Home.css';
 import profileImage from '../../Assets/Images/matias-arguello.jpg';
 import projectImage from '../../Assets/Images/Screenshot.png';
