@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
-import profileImage from '../../Assets/Images/matias-arguello.jpg';
-import projectImage from '../../Assets/Images/Screenshot.png';
+import profileImage from '../../Assets/Images/pngtree-vector-business-men-icon-png-image_925963.jpg';
 import resumePdf from '../../Assets/Resume/Resume.pdf';
 
 const whatsappUrl = 'https://wa.me/595991246806?text=Hola%20Mat%C3%ADas%2C%20vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20tu%20experiencia%20profesional.';
@@ -36,28 +35,28 @@ const projects = [
     description: 'Proyecto de referencia en terminaciones finas y control de ejecución de obra.',
     responsibilities: 'Supervisión de personal, seguimiento de obra, coordinación de trabajos y revisión de terminaciones.',
     result: 'Acompañamiento técnico para lograr acabados prolijos y estándares consistentes de calidad.',
-    image: projectImage,
+    visual: 'building',
   },
   {
     title: 'Terminaciones Finas',
-    description: 'Proyecto placeholder documentado para representar trabajos reales de acabado arquitectónico.',
-    responsibilities: 'Preparación de superficies, revisión de detalles y control visual de terminaciones.',
-    result: 'Mejora de presentación final y cuidado de detalles constructivos.',
-    image: profileImage,
+    description: 'Registro reservado para documentar trabajos de acabado arquitectónico y detalles de obra.',
+    responsibilities: 'Preparación de superficies, revisión de encuentros, aristas y control visual de terminaciones.',
+    result: 'Mejora de presentación final con énfasis en precisión constructiva y cuidado de detalles.',
+    visual: 'interior',
   },
   {
     title: 'Pintura Arquitectónica',
-    description: 'Proyecto placeholder para trabajos de pintura profesional desarrollados mediante Alex Color PY.',
-    responsibilities: 'Planificación de tareas, coordinación del equipo y control del resultado final.',
-    result: 'Aplicación ordenada con enfoque en prolijidad, durabilidad y limpieza de entrega.',
-    image: projectImage,
+    description: 'Registro reservado para trabajos de pintura aplicada a espacios arquitectónicos mediante Alex Color PY.',
+    responsibilities: 'Planificación de tareas, coordinación de equipo y control del acabado final.',
+    result: 'Ejecución ordenada con enfoque en prolijidad, durabilidad y limpieza de entrega.',
+    visual: 'facade',
   },
   {
     title: 'Revestimientos y Acabados de Obra',
-    description: 'Proyecto placeholder para futuras obras documentadas de revestimientos y acabados.',
-    responsibilities: 'Seguimiento de ejecución, control de calidad y coordinación de etapas de terminación.',
+    description: 'Registro reservado para futuras obras documentadas de revestimientos y acabados arquitectónicos.',
+    responsibilities: 'Seguimiento de ejecución, control de calidad constructiva y coordinación de etapas de terminación.',
     result: 'Proceso de obra más organizado y terminaciones alineadas al objetivo del proyecto.',
-    image: profileImage,
+    visual: 'blueprint',
   },
 ];
 
@@ -165,7 +164,9 @@ const Home = () => (
       <div className="projects-grid">
         {projects.map((project) => (
           <article className="project-card" key={project.title}>
-            <img src={project.image} alt={project.title} />
+            <div className={`project-visual project-visual-${project.visual}`} aria-hidden="true">
+              <span>{project.title}</span>
+            </div>
             <div className="project-body">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
@@ -194,7 +195,7 @@ const Home = () => (
         <p className="eyebrow">Experiencia Empresarial</p>
         <h2>Alex Color PY</h2>
         <p>
-          Alex Color PY es una iniciativa enfocada en pintura profesional, terminaciones arquitectónicas y acabados de obra. Forma parte del recorrido profesional de Matías como experiencia empresarial y marca personal.
+          Alex Color PY es una experiencia empresarial complementaria enfocada en pintura profesional, terminaciones arquitectónicas y acabados de obra. Forma parte del recorrido profesional de Matías como práctica de gestión, coordinación y atención a proyectos reales.
         </p>
       </div>
     </section>
