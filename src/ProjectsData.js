@@ -1,5 +1,80 @@
+const worksContext = require.context('./Assets/Trabajos', true, /\.(png|jpe?g|webp|avif|gif|mp4|webm|mov)$/i)
+
+const imageExtensions = /\.(png|jpe?g|webp|avif|gif)$/i
+const videoExtensions = /\.(mp4|webm|mov)$/i
+
+const normalizeText = (value = '') =>
+  value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+
+const mediaType = (path) => (videoExtensions.test(path) ? 'video' : 'image')
+
+const worksMedia = worksContext.keys().reduce((acc, key) => {
+  const cleanKey = key.replace('./', '')
+  const [folderName] = cleanKey.split('/')
+  const folderKey = normalizeText(folderName)
+
+  if (!folderKey) return acc
+
+  const fileName = cleanKey.split('/').pop()
+  const item = {
+    src: worksContext(key),
+    type: mediaType(fileName),
+    name: fileName,
+  }
+
+  if (!acc[folderKey]) acc[folderKey] = []
+  acc[folderKey].push(item)
+
+  return acc
+}, {})
+
+const fallbackMedia = (project) => [
+  project.shot1,
+  project.shot2,
+  project.shot3,
+  project.shot4,
+  project.layer1,
+  project.layer2,
+  project.plan1,
+  project.plan2,
+  ...(project.elevations || []).map((elevation) => elevation.image),
+]
+  .filter(Boolean)
+  .map((src, index) => ({
+    src,
+    type: imageExtensions.test(src) || src.startsWith('http') ? 'image' : 'video',
+    name: `${project.name} ${index + 1}`,
+  }))
+
+const mediaForProject = (project) => {
+  const projectKey = normalizeText(project.name)
+  const matchedFolderKey = Object.keys(worksMedia).find((folderKey) => (
+    folderKey.includes(projectKey) || projectKey.includes(folderKey)
+  ))
+
+  const localMedia = matchedFolderKey ? worksMedia[matchedFolderKey] : []
+  const media = localMedia.length > 0 ? localMedia : fallbackMedia(project)
+  const photos = media.filter((item) => item.type === 'image')
+  const videos = media.filter((item) => item.type === 'video')
+
+  return {
+    ...project,
+    slug: encodeURIComponent(project.name),
+    role: project.role || 'Supervisión operativa, coordinación de trabajos y control de calidad en obra.',
+    media,
+    photos,
+    videos,
+    cover: photos[0]?.src || videos[0]?.src || project.shot1,
+  }
+}
+
 // All The Data
-export const ProjectsData = [
+const baseProjectsData = [
     {
         id: 1,
         name: 'Edificio Altamira',
@@ -134,3 +209,5 @@ export const ProjectsData = [
         ]
     }
 ]
+
+export const ProjectsData = baseProjectsData.map(mediaForProject)
