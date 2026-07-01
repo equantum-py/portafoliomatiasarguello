@@ -6,6 +6,11 @@
   --white: #ffffff;
   --light-gray: #f5f7fa;
   --text-dark: #1f2937;
+  
+  /* Variables faltantes (fix para EDEX.css y Loading.css) */
+  --dark-brown: #69625d;
+  --brown: #69625d;
+  --green: #4a9d6f;
 }
 
 html {
