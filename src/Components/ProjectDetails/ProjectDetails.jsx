@@ -25,25 +25,24 @@ const ProjectDetails = () => {
   }
 
   const gallery = chosenProj.media || []
-  const photosCount = chosenProj.photos?.length || 0
-  const videosCount = chosenProj.videos?.length || 0
   const heroMedia = gallery[0]
   const supportingMedia = gallery.slice(1)
+  const poster = chosenProj.photos?.[0]?.src
 
   return (
     <main className="projectData">
       <section className="project-hero">
         <div className="project-hero-media">
           {heroMedia?.type === 'video' ? (
-            <video src={heroMedia.src} muted playsInline autoPlay loop />
+            <video src={heroMedia.src} controls playsInline preload="metadata" poster={poster} />
           ) : (
-            <img src={chosenProj.cover} alt={chosenProj.name} />
+            <img src={chosenProj.cover} alt={chosenProj.name} loading="lazy" />
           )}
         </div>
         <motion.div
           initial={{ transform: 'translateY(36px)', opacity: 0 }}
           animate={{ transform: 'translateY(0)', opacity: 1 }}
-          transition={{ type: 'spring', duration: 2 }}
+          transition={{ type: 'spring', duration: 1.6 }}
           className="project-hero-content"
         >
           <Link to="/#proyectos" className="detail-back">← Proyectos</Link>
@@ -53,34 +52,38 @@ const ProjectDetails = () => {
         </motion.div>
       </section>
 
-      <section className="project-overview">
+      <section className="project-overview" aria-label="Resumen profesional del proyecto">
         <article>
-          <span>Participación</span>
+          <span>Descripción</span>
+          <p>{chosenProj.explain}</p>
+        </article>
+        <article>
+          <span>Mi participación</span>
           <p>{chosenProj.role}</p>
         </article>
         <article>
-          <span>Material visual</span>
-          <p>{photosCount} fotos · {videosCount} videos</p>
-        </article>
-        <article>
-          <span>Enfoque</span>
-          <p>{chosenProj.explain}</p>
+          <span>Resultado</span>
+          <p>{chosenProj.result}</p>
         </article>
       </section>
 
-      <section className="project-statement">
-        <p className="detail-eyebrow">Desarrollo</p>
-        <h2>Una mirada de obra, ejecución y detalle.</h2>
-        <p>{chosenProj.explain}</p>
+      <section className="project-responsibilities">
+        <p className="detail-eyebrow">Responsabilidades</p>
+        <h2>Ejecución, supervisión y calidad en obra.</h2>
+        <ul>
+          {chosenProj.responsibilities.map((responsibility) => (
+            <li key={responsibility}>{responsibility}</li>
+          ))}
+        </ul>
       </section>
 
-      <section className="project-gallery" aria-label={`Galería de ${chosenProj.name}`}>
+      <section className="project-gallery" aria-label={`Galería editorial de ${chosenProj.name}`}>
         {supportingMedia.map((item, index) => (
-          <figure className={index % 5 === 0 ? 'wide' : ''} key={`${item.name}-${index}`}>
+          <figure className={index % 4 === 0 ? 'wide' : index % 4 === 1 ? 'tall' : ''} key={`${item.name}-${index}`}>
             {item.type === 'video' ? (
-              <video src={item.src} controls playsInline preload="metadata" />
+              <video src={item.src} controls playsInline preload="metadata" poster={poster} />
             ) : (
-              <img src={item.src} alt={`${chosenProj.name} ${index + 2}`} />
+              <img src={item.src} alt={`${chosenProj.name} ${index + 2}`} loading="lazy" />
             )}
           </figure>
         ))}

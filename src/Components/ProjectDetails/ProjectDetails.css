@@ -1,7 +1,8 @@
 .projectData {
-  background: #f6f8fa;
+  background: #f8fafb;
   color: #17394a;
   min-height: 100vh;
+  padding: clamp(18px, 2.5vw, 34px);
 }
 
 .project-hero {
@@ -12,7 +13,8 @@
 
 .project-hero-media {
   background: #dfe7eb;
-  min-height: 100vh;
+  border-radius: 28px;
+  min-height: calc(100vh - clamp(36px, 5vw, 68px));
   overflow: hidden;
 }
 
@@ -57,7 +59,7 @@
 
 .project-hero p,
 .project-overview p,
-.project-statement p {
+.project-responsibilities p {
   color: #344654;
   font-size: 1rem;
   line-height: 1.8;
@@ -69,13 +71,13 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 0 auto;
   max-width: 1180px;
-  padding: 72px 24px 38px;
+  padding: 90px 24px 44px;
 }
 
 .project-overview article {
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(8, 57, 77, 0.09);
-  min-height: 210px;
+  min-height: 240px;
   padding: 32px;
 }
 
@@ -89,14 +91,36 @@
   text-transform: uppercase;
 }
 
-.project-statement {
+.project-responsibilities {
   margin: 0 auto;
   max-width: 840px;
   padding: 62px 24px 70px;
   text-align: center;
 }
 
-.project-statement h2 {
+.project-responsibilities ul {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+  text-align: left;
+}
+
+.project-responsibilities li {
+  background: #ffffff;
+  border: 1px solid rgba(8, 57, 77, 0.1);
+  border-radius: 999px;
+  color: #08394d;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  padding: 14px 18px;
+  text-transform: uppercase;
+}
+
+.project-responsibilities h2 {
   color: #08394d;
   font-size: clamp(2.2rem, 4.6vw, 4.4rem);
   letter-spacing: -0.06em;
@@ -106,8 +130,8 @@
 
 .project-gallery {
   display: grid;
-  gap: 22px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 34px);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   margin: 0 auto;
   max-width: 1180px;
   padding: 0 24px 96px;
@@ -116,12 +140,19 @@
 .project-gallery figure {
   background: #e6ecef;
   margin: 0;
+  border-radius: 24px;
+  grid-column: span 3;
   min-height: 430px;
   overflow: hidden;
 }
 
 .project-gallery figure.wide {
-  grid-column: 1 / -1;
+  grid-column: span 4;
+  min-height: 620px;
+}
+
+.project-gallery figure.tall {
+  grid-column: span 2;
   min-height: 620px;
 }
 
@@ -154,12 +185,17 @@
     min-height: 58vh;
   }
 
+  .project-responsibilities ul {
+    grid-template-columns: 1fr;
+  }
+
   .project-gallery {
     grid-template-columns: 1fr;
   }
 
   .project-gallery figure,
-  .project-gallery figure.wide {
+  .project-gallery figure.wide,
+  .project-gallery figure.tall {
     grid-column: auto;
     min-height: 360px;
   }
@@ -171,14 +207,15 @@
   }
 
   .project-overview,
-  .project-statement,
+  .project-responsibilities,
   .project-gallery {
     padding-left: 18px;
     padding-right: 18px;
   }
 
   .project-gallery figure,
-  .project-gallery figure.wide {
+  .project-gallery figure.wide,
+  .project-gallery figure.tall {
     min-height: 280px;
   }
 }
