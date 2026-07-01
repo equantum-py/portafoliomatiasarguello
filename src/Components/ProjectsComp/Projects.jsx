@@ -6,11 +6,10 @@ import { motion } from 'framer-motion'
 
 const Projects = () => {
   const transition = { type: 'spring', duration: 1.6 }
-  const featuredProjects = ProjectsData.slice(0, 4)
 
   return (
     <div className="case-studies" aria-label="Proyectos y trabajos destacados">
-      {featuredProjects.map((project, index) => (
+      {ProjectsData.map((project, index) => (
         <motion.article
           initial={{ transform: 'translateY(42px)', opacity: 0 }}
           whileInView={{ transform: 'translateY(0)', opacity: 1 }}

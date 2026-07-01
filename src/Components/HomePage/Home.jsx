@@ -2,9 +2,6 @@ import React from 'react';
 import {
   FaFacebookF,
   FaHardHat,
-  FaPeopleCarry,
-  FaProjectDiagram,
-  FaRulerCombined,
   FaWhatsapp,
 } from 'react-icons/fa';
 import {
@@ -70,36 +67,11 @@ const currentWork = {
   ],
 };
 
-const experiences = [
-  {
-    title: 'Experiencia en Obra',
-    subtitle: 'Supervisión, coordinación y ejecución',
-    icon: <FaProjectDiagram />,
-    items: [
-      'Supervisión de trabajos en diferentes etapas de la obra.',
-      'Coordinación de personal y control de tareas diarias.',
-      'Control de calidad y cumplimiento de tiempos.',
-      'Lectura operativa de planos y seguimiento en campo.',
-    ],
-  },
-  {
-    title: 'Gestión y Marca Personal',
-    subtitle: 'Dirección operativa de proyectos',
-    icon: <FaPeopleCarry />,
-    items: [
-      'Gestión operativa de trabajos y recursos.',
-      'Atención a clientes y asesoramiento.',
-      'Planificación y organización de equipos.',
-      'Seguimiento de entregas y resultados.',
-    ],
-  },
-];
-
 const skills = [
   { title: 'Lectura de planos', detail: 'Interpretación y análisis de documentación.', icon: <FiMap /> },
   { title: 'Control de calidad', detail: 'Revisión de procesos y materiales.', icon: <FiCheckCircle /> },
   { title: 'Gestión de equipos', detail: 'Liderazgo y coordinación de personal.', icon: <FiUsers /> },
-  { title: 'Planificación', detail: 'Organización de tareas y recursos.', icon: <FaRulerCombined /> },
+  { title: 'Planificación', detail: 'Organización de tareas y recursos.', icon: <FaHardHat /> },
   { title: 'Seguimiento de obra', detail: 'Control de avances, tiempos y resultados.', icon: <FiBriefcase /> },
 ];
 
@@ -119,8 +91,7 @@ const Home = () => (
           Mi enfoque está en la organización, los detalles constructivos y el trabajo en equipo para lograr resultados de calidad.
         </p>
         <div className="hero-actions">
-          <a className="primary-button" href="#experiencia">Ver Experiencia</a>
-          <a className="secondary-button" href="#proyectos">Ver Proyectos</a>
+          <a className="primary-button" href="#proyectos">Ver Proyectos</a>
           <a className="secondary-button" href={resumePdf} download><FiDownload /> Descargar CV</a>
           <a className="secondary-button" href={whatsappUrl} target="_blank" rel="noopener noreferrer"><FaWhatsapp /> WhatsApp</a>
         </div>
@@ -177,24 +148,6 @@ const Home = () => (
         </div>
         <div className="cp-mark" aria-hidden="true">CP<span>Pintura</span></div>
       </article>
-    </section>
-
-    <section id="experiencia" className="section experience-section">
-      <div className="section-heading compact-heading">
-        <p className="eyebrow">Experiencia en Obra y Gestión</p>
-      </div>
-      <div className="experience-grid">
-        {experiences.map((experience) => (
-          <article className="experience-card" key={experience.title}>
-            <span className="experience-icon">{experience.icon}</span>
-            <div>
-              <p className="card-subtitle">{experience.subtitle}</p>
-              <h3>{experience.title}</h3>
-              <ul>{experience.items.map((item) => <li key={item}>{item}</li>)}</ul>
-            </div>
-          </article>
-        ))}
-      </div>
     </section>
 
     <section id="proyectos" className="section projects-section">
