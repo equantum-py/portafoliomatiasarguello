@@ -2,19 +2,28 @@
   background: #f8fafb;
   color: #17394a;
   min-height: 100vh;
-  padding: clamp(18px, 2.5vw, 34px);
+  padding: clamp(16px, 2.2vw, 30px);
+}
+
+.project-top-nav {
+  margin: 0 auto 18px;
+  max-width: 1180px;
 }
 
 .project-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.65fr);
-  min-height: 100vh;
+  gap: clamp(22px, 3vw, 46px);
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  min-height: 70vh;
+  margin: 0 auto;
+  max-width: 1180px;
 }
 
 .project-hero-media {
   background: #dfe7eb;
-  border-radius: 28px;
-  min-height: calc(100vh - clamp(36px, 5vw, 68px));
+  border-radius: 24px;
+  box-shadow: 0 24px 54px rgba(8, 57, 77, 0.09);
+  min-height: 58vh;
   overflow: hidden;
 }
 
@@ -27,8 +36,8 @@
 }
 
 .project-hero-content {
-  align-self: end;
-  padding: clamp(34px, 5vw, 76px);
+  align-self: center;
+  padding: clamp(20px, 3.2vw, 46px) 0;
 }
 
 .detail-back,
@@ -36,25 +45,32 @@
   color: #08394d;
   display: inline-block;
   font-weight: 900;
-  margin-bottom: 36px;
+  margin-bottom: 0;
   text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.detail-back:hover,
+.detail-link:hover {
+  color: #ff8200;
+  transform: translateX(-3px);
 }
 
 .detail-eyebrow {
   color: #ff8200;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.14em;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   text-transform: uppercase;
 }
 
 .project-hero h1 {
   color: #08394d;
-  font-size: clamp(3rem, 6vw, 6.4rem);
-  letter-spacing: -0.07em;
-  line-height: 0.94;
-  margin-bottom: 24px;
+  font-size: clamp(2.15rem, 4.2vw, 4.35rem);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  margin-bottom: 20px;
 }
 
 .project-hero p,
@@ -62,7 +78,41 @@
 .project-responsibilities p {
   color: #344654;
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.7;
+}
+
+.project-meta {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 28px 0 0;
+}
+
+.project-meta-item {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(8, 57, 77, 0.1);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.project-meta-item dt {
+  align-items: center;
+  color: #ff8200;
+  display: flex;
+  font-size: 0.72rem;
+  font-weight: 900;
+  gap: 8px;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.project-meta-item dd {
+  color: #08394d;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.45;
+  margin: 0;
 }
 
 .project-overview {
@@ -71,39 +121,39 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 0 auto;
   max-width: 1180px;
-  padding: 90px 24px 44px;
+  padding: 54px 0 26px;
 }
 
 .project-overview article {
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(8, 57, 77, 0.09);
-  min-height: 240px;
-  padding: 32px;
+  min-height: 150px;
+  padding: 22px 24px;
 }
 
 .project-overview span {
   color: #ff8200;
   display: block;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.12em;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   text-transform: uppercase;
 }
 
 .project-responsibilities {
   margin: 0 auto;
   max-width: 840px;
-  padding: 62px 24px 70px;
+  padding: 42px 0 52px;
   text-align: center;
 }
 
 .project-responsibilities ul {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
-  margin: 34px 0 0;
+  margin: 28px 0 0;
   padding: 0;
   text-align: left;
 }
@@ -113,35 +163,35 @@
   border: 1px solid rgba(8, 57, 77, 0.1);
   border-radius: 999px;
   color: #08394d;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 900;
   letter-spacing: 0.04em;
-  padding: 14px 18px;
+  padding: 12px 16px;
   text-transform: uppercase;
 }
 
 .project-responsibilities h2 {
   color: #08394d;
-  font-size: clamp(2.2rem, 4.6vw, 4.4rem);
-  letter-spacing: -0.06em;
+  font-size: clamp(1.9rem, 3.7vw, 3.55rem);
+  letter-spacing: -0.055em;
   line-height: 1;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .project-gallery {
   display: grid;
-  gap: clamp(18px, 3vw, 34px);
+  gap: clamp(12px, 2vw, 22px);
   grid-template-columns: repeat(6, minmax(0, 1fr));
   margin: 0 auto;
   max-width: 1180px;
-  padding: 0 24px 96px;
+  padding: 0 0 74px;
 }
 
 .project-gallery figure {
   background: #e6ecef;
-  margin: 0;
   border-radius: 24px;
   grid-column: span 3;
+  margin: 0;
   min-height: 430px;
   overflow: hidden;
 }
@@ -156,8 +206,16 @@
   min-height: 620px;
 }
 
+.project-gallery figure.video-card {
+  background: #ffffff;
+  border: 1px solid rgba(8, 57, 77, 0.12);
+  box-shadow: 0 22px 48px rgba(8, 57, 77, 0.12);
+  padding: 10px;
+}
+
 .project-gallery img,
 .project-gallery video {
+  border-radius: inherit;
   display: block;
   height: 100%;
   object-fit: cover;
@@ -175,18 +233,46 @@
   margin-bottom: 24px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .project-hero {
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
+    min-height: 64vh;
+  }
+
+  .project-hero-media {
+    min-height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
   .project-hero,
   .project-overview {
     grid-template-columns: 1fr;
   }
 
-  .project-hero-media {
-    min-height: 58vh;
+  .project-top-nav {
+    margin-bottom: 14px;
   }
 
+  .project-hero-media {
+    min-height: 42vh;
+  }
+
+  .project-hero-content {
+    padding: 10px 0 0;
+  }
+
+  .project-meta,
   .project-responsibilities ul {
     grid-template-columns: 1fr;
+  }
+
+  .project-overview {
+    padding-top: 40px;
+  }
+
+  .project-overview article {
+    min-height: unset;
   }
 
   .project-gallery {
@@ -197,25 +283,52 @@
   .project-gallery figure.wide,
   .project-gallery figure.tall {
     grid-column: auto;
-    min-height: 360px;
+    min-height: 340px;
   }
 }
 
 @media (max-width: 560px) {
-  .project-hero-content {
-    padding: 30px 20px 44px;
+  .projectData {
+    padding: 14px;
+  }
+
+  .project-hero h1 {
+    font-size: clamp(2rem, 12vw, 2.9rem);
+  }
+
+  .project-hero-media {
+    border-radius: 18px;
+    min-height: 34vh;
   }
 
   .project-overview,
   .project-responsibilities,
   .project-gallery {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .project-gallery figure,
   .project-gallery figure.wide,
   .project-gallery figure.tall {
-    min-height: 280px;
+    border-radius: 18px;
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 360px) {
+  .projectData {
+    padding: 12px;
+  }
+
+  .project-meta-item,
+  .project-overview article {
+    padding: 14px;
+  }
+
+  .project-gallery figure,
+  .project-gallery figure.wide,
+  .project-gallery figure.tall {
+    min-height: 230px;
   }
 }
