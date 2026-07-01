@@ -19,6 +19,7 @@ import {
 import './Home.css';
 import profileImage from '../../Assets/Images/matias-arguello.jpg';
 import resumePdf from '../../Assets/Resume/MATIAS ARGUELLO - 2026 (1).pdf';
+import Projects from '../ProjectsComp/Projects';
 
 const whatsappUrl = 'https://wa.me/595991246806?text=Hola%20Mat%C3%ADas%2C%20vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20tu%20experiencia%20profesional.';
 
@@ -91,29 +92,6 @@ const experiences = [
       'Planificación y organización de equipos.',
       'Seguimiento de entregas y resultados.',
     ],
-  },
-];
-
-const projects = [
-  {
-    title: 'Edificio Altamira',
-    description: 'Participación en obra, control de ejecución y coordinación de trabajos.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Interiores Contemporáneos',
-    description: 'Ejecución y supervisión de trabajos en espacios interiores.',
-    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Pintura Profesional',
-    description: 'Trabajos de pintura en viviendas y locales comerciales.',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Revestimientos y Acabados',
-    description: 'Colocación, revisión y control de detalles finales de obra.',
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=900&q=80',
   },
 ];
 
@@ -223,17 +201,7 @@ const Home = () => (
       <div className="section-heading compact-heading">
         <p className="eyebrow">Proyectos y Trabajos Destacados</p>
       </div>
-      <div className="projects-grid">
-        {projects.map((project) => (
-          <article className="project-card" key={project.title}>
-            <img src={project.image} alt={project.title} />
-            <div className="project-body">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-            </div>
-          </article>
-        ))}
-      </div>
+      <Projects />
     </section>
 
     <section id="habilidades" className="section skills-tools-section">
