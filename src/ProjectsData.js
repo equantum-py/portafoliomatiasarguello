@@ -1,5 +1,132 @@
+const worksContext = require.context('./Assets/Trabajos', true, /\.(png|jpe?g|webp|avif|gif|mp4|webm|mov)$/i)
+
+const imageExtensions = /\.(png|jpe?g|webp|avif|gif)$/i
+const videoExtensions = /\.(mp4|webm|mov)$/i
+const datePattern = /(20\d{2}[-_ .]?(?:0[1-9]|1[0-2])[-_ .]?(?:0[1-9]|[12]\d|3[01])|(?:0[1-9]|[12]\d|3[01])[-_ .]?(?:0[1-9]|1[0-2])[-_ .]?20\d{2})/i
+const timePattern = /(?:[01]?\d|2[0-3])[-_ .]?[0-5]\d(?:[-_ .]?[0-5]\d)?/i
+const cameraNoisePattern = /\b(img|image|foto|photo|video|vid|wa|whatsapp|dsc|pxl|screenshot|screen|mov|mp4)\b/gi
+
+const normalizeText = (value = '') =>
+  value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+
+const mediaType = (path) => (videoExtensions.test(path) ? 'video' : 'image')
+
+const fileBaseName = (path) => path.split('/').pop().replace(/\.[^.]+$/, '')
+
+const titleFromText = (value) =>
+  normalizeText(value)
+    .split(' ')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+
+const clusterKeyFromFile = (fileName) => {
+  const baseName = fileBaseName(fileName)
+  const withoutDates = baseName
+    .replace(datePattern, ' ')
+    .replace(timePattern, ' ')
+    .replace(cameraNoisePattern, ' ')
+    .replace(/\b\d{3,}\b/g, ' ')
+
+  const meaningful = normalizeText(withoutDates)
+  return meaningful || normalizeText(baseName) || 'trabajos'
+}
+
+const folderKeyFromPath = (cleanKey) => {
+  const parts = cleanKey.split('/')
+
+  if (parts.length > 1) {
+    return normalizeText(parts[0])
+  }
+
+  return clusterKeyFromFile(parts[0])
+}
+
+const worksMedia = worksContext.keys().reduce((acc, key) => {
+  const cleanKey = key.replace('./', '')
+  const folderKey = folderKeyFromPath(cleanKey)
+  const fileName = cleanKey.split('/').pop()
+
+  if (!folderKey) return acc
+
+  const item = {
+    src: worksContext(key),
+    type: mediaType(fileName),
+    name: fileName,
+    group: titleFromText(folderKey),
+  }
+
+  if (!acc[folderKey]) acc[folderKey] = []
+  acc[folderKey].push(item)
+
+  return acc
+}, {})
+
+Object.keys(worksMedia).forEach((key) => {
+  worksMedia[key].sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+})
+
+const fallbackMedia = (project) => [
+  project.shot1,
+  project.shot2,
+  project.shot3,
+  project.shot4,
+  project.layer1,
+  project.layer2,
+  project.plan1,
+  project.plan2,
+  ...(project.elevations || []).map((elevation) => elevation.image),
+]
+  .filter(Boolean)
+  .map((src, index) => ({
+    src,
+    type: imageExtensions.test(src) || src.startsWith('http') ? 'image' : 'video',
+    name: `${project.name} ${index + 1}`,
+    group: project.name,
+  }))
+
+const briefText = (project) => project.brief || `${project.concept.slice(0, 132).trim()}${project.concept.length > 132 ? '…' : ''}`
+
+const defaultResponsibilities = [
+  'Supervisión de ejecución en obra.',
+  'Coordinación operativa de tareas y equipos.',
+  'Control de calidad en terminaciones y avances.',
+]
+
+const mediaForProject = (project) => {
+  const projectKey = normalizeText(project.name)
+  const matchedFolderKey = Object.keys(worksMedia).find((folderKey) => (
+    folderKey.includes(projectKey) || projectKey.includes(folderKey)
+  ))
+
+  const localMedia = matchedFolderKey ? worksMedia[matchedFolderKey] : []
+  const media = localMedia.length > 0 ? localMedia : fallbackMedia(project)
+  const photos = media.filter((item) => item.type === 'image')
+  const videos = media.filter((item) => item.type === 'video')
+
+  return {
+    ...project,
+    slug: encodeURIComponent(project.name),
+    brief: briefText(project),
+    role: project.role || 'Supervisión operativa, coordinación de trabajos y control de calidad en obra.',
+    responsibilities: project.responsibilities || defaultResponsibilities,
+    process: project.process || 'Seguimiento de tareas en campo, revisión de avances y coordinación de los recursos necesarios para sostener el ritmo de obra.',
+    result: project.result || 'Trabajo documentado con foco en orden, terminación y calidad visual del proceso constructivo.',
+    media,
+    photos,
+    videos,
+    cover: photos[0]?.src || videos[0]?.src || project.shot1,
+  }
+}
+
+
 // All The Data
-export const ProjectsData = [
+const baseProjectsData = [
     {
         id: 1,
         name: 'Edificio Altamira',
@@ -133,4 +260,40 @@ export const ProjectsData = [
             }
         ]
     }
+]
+
+const detectedProjectData = Object.entries(worksMedia)
+  .filter(([folderKey]) => !baseProjectsData.some((project) => {
+    const projectKey = normalizeText(project.name)
+    return folderKey.includes(projectKey) || projectKey.includes(folderKey)
+  }))
+  .map(([folderKey, media], index) => {
+    const photos = media.filter((item) => item.type === 'image')
+    const videos = media.filter((item) => item.type === 'video')
+    const name = titleFromText(folderKey) || `Trabajo ${index + 1}`
+
+    return {
+      id: baseProjectsData.length + index + 1,
+      name,
+      concept: 'Registro profesional de trabajos reales en obra, con foco en ejecución, supervisión y terminaciones.',
+      explain: 'Documentación visual de procesos constructivos, avances y resultados ejecutados en campo.',
+      brief: 'Registro real de obra, ejecución y terminaciones documentadas en campo.',
+      role: 'Supervisión operativa, coordinación de trabajos y control de calidad en obra.',
+      responsibilities: defaultResponsibilities,
+      process: 'Organización de tareas, seguimiento de avances y verificación visual de la ejecución en obra.',
+      result: 'Documentación clara del trabajo realizado y de la calidad alcanzada en el proceso constructivo.',
+      slug: encodeURIComponent(name),
+      media,
+      photos,
+      videos,
+      cover: photos[0]?.src || videos[0]?.src,
+      elevations: [],
+      margin: false,
+    }
+  })
+
+
+export const ProjectsData = [
+  ...baseProjectsData.map(mediaForProject),
+  ...detectedProjectData,
 ]
