@@ -227,8 +227,14 @@
 }
 
 @media (max-width: 768px) {
+  .case-studies {
+    gap: 34px;
+  }
+
   .case-card,
   .case-card:nth-child(even) {
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(8, 57, 77, 0.09);
     grid-template-columns: 1fr;
     min-height: unset;
   }
@@ -238,12 +244,13 @@
   }
 
   .case-image {
-    min-height: 340px;
+    min-height: 360px;
   }
 
   .case-content {
-    gap: 18px;
-    padding: clamp(24px, 5vw, 40px);
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 30px 24px 28px;
   }
 
   .case-content h3 {
@@ -257,168 +264,6 @@
 }
 
 @media (max-width: 640px) {
-  .case-card {
-    border-radius: 16px;
-  }
-
-  .case-image {
-    min-height: 300px;
-  }
-
-  .case-content {
-    padding: 20px 18px 22px;
-  }
-
-  .case-topline {
-    margin-bottom: 14px;
-  }
-
-  .case-index {
-    font-size: 0.7rem;
-    height: 30px;
-    min-width: 46px;
-  }
-
-  .case-kicker {
-    font-size: 0.68rem;
-  }
-
-  .case-content h3 {
-    font-size: clamp(1.5rem, 7vw, 2.4rem);
-    line-height: 1.05;
-    margin-bottom: 14px;
-  }
-
-  .case-badges span,
-  .case-media-counts span {
-    font-size: 0.68rem;
-    padding: 7px 10px;
-  }
-
-  .case-meta-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-meta-grid div {
-    padding: 14px 0;
-  }
-
-  .case-meta-grid div + div {
-    border-left: 0;
-    border-top: 1px solid rgba(8, 57, 77, 0.1);
-    padding-left: 0;
-  }
-
-  .case-responsibilities li {
-    font-size: 0.88rem;
-  }
-
-  .case-footer {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .case-button {
-    font-size: 0.82rem;
-    padding: 12px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .case-card {
-    border-radius: 14px;
-  }
-
-  .case-image {
-    min-height: 260px;
-  }
-
-  .case-content {
-    padding: 18px 16px 20px;
-  }
-
-  .case-description {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 390px) {
-  .case-image {
-    min-height: 220px;
-  }
-
-  .case-content {
-    padding: 16px 14px 18px;
-  }
-
-  .case-content h3 {
-    font-size: clamp(1.35rem, 8vw, 1.9rem);
-  }
-}
-
-@media (max-width: 320px) {
-  .case-image {
-    min-height: 180px;
-  }
-
-  .case-content {
-    padding: 14px 12px 16px;
-  }
-
-  .case-button {
-    font-size: 0.74rem;
-    padding: 10px 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .case-studies {
-    gap: 34px;
-  }
-
-  .case-card {
-    border-radius: 22px;
-    box-shadow: 0 20px 50px rgba(8, 57, 77, 0.09);
-  }
-
-  .case-image {
-    min-height: 360px;
-  }
-
-  .case-content {
-    gap: 20px;
-    justify-content: flex-start;
-    padding: 30px 24px 28px;
-  }
-
-  .case-topline {
-    margin-bottom: 16px;
-  }
-
-  .case-badges,
-  .case-media-counts {
-    gap: 9px;
-  }
-
-  .case-meta-grid div {
-    padding: 16px 0;
-  }
-
-  .case-description {
-    max-width: 62ch;
-  }
-
-  .case-footer {
-    margin-top: 2px;
-  }
-}
-
-@media (max-width: 480px) {
-  .case-studies {
-    gap: 30px;
-  }
-
   .case-card {
     border-radius: 20px;
   }
@@ -443,29 +288,42 @@
   }
 
   .case-index {
+    font-size: 0.7rem;
     height: 32px;
     min-width: 48px;
   }
 
+  .case-kicker {
+    font-size: 0.68rem;
+  }
+
   .case-content h3 {
     font-size: clamp(1.75rem, 9vw, 2.35rem);
+    line-height: 1.05;
     margin-bottom: 16px;
   }
 
   .case-badges span,
   .case-media-counts span {
+    font-size: 0.68rem;
     letter-spacing: 0.04em;
     line-height: 1.15;
     padding: 8px 10px;
   }
 
   .case-meta-grid {
+    grid-template-columns: 1fr;
     margin: 2px 0;
   }
 
-  .case-description {
-    font-size: 0.94rem;
-    line-height: 1.62;
+  .case-meta-grid div {
+    padding: 14px 0;
+  }
+
+  .case-meta-grid div + div {
+    border-left: 0;
+    border-top: 1px solid rgba(8, 57, 77, 0.1);
+    padding-left: 0;
   }
 
   .case-responsibilities {
@@ -481,14 +339,22 @@
     margin-top: 7px;
   }
 
+  .case-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
   .case-button {
     border-radius: 12px;
+    font-size: 0.82rem;
     min-height: 50px;
+    padding: 12px 20px;
     width: 100%;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 390px) {
   .case-content {
     gap: 16px;
     padding: 24px 17px 22px;
@@ -509,5 +375,16 @@
 
   .case-description {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .case-content {
+    padding: 20px 14px 18px;
+  }
+
+  .case-button {
+    font-size: 0.74rem;
+    padding: 10px 14px;
   }
 }
