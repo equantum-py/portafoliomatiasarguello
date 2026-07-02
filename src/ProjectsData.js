@@ -13,6 +13,56 @@ const collator = new Intl.Collator('es', {
   sensitivity: 'base',
 })
 
+const projectTextByFolder = {
+  'Edificio Alcántara': {
+    tipo: 'Edificio residencial',
+    ubicacion: 'Asunción, Paraguay',
+    estado: 'En ejecución',
+    rol: 'Supervisión de obra',
+    descripcion:
+      'Supervisión de trabajos en obra, control de avances, coordinación operativa y seguimiento de calidad durante el proceso constructivo.',
+    responsabilidades: [
+      'Supervisión diaria de trabajos',
+      'Coordinación de cuadrillas',
+      'Control de calidad',
+      'Seguimiento de avances',
+    ],
+    resultado:
+      'Registro visual del avance de obra y acompañamiento operativo del proceso constructivo.',
+  },
+  'Obra Altavida': {
+    tipo: 'Edificio multifamiliar',
+    ubicacion: 'Asunción, Paraguay',
+    estado: 'En ejecución',
+    rol: 'Supervisión y seguimiento de obra',
+    descripcion:
+      'Seguimiento técnico del avance constructivo, control de tareas ejecutadas y documentación visual del proceso de obra.',
+    responsabilidades: [
+      'Control de avances',
+      'Supervisión de ejecución',
+      'Coordinación operativa',
+      'Revisión de terminaciones',
+    ],
+    resultado:
+      'Documentación ordenada del proceso constructivo y control visual del avance.',
+  },
+}
+
+const defaultProjectText = {
+  tipo: 'Proyecto de obra',
+  ubicacion: 'Asunción, Paraguay',
+  estado: 'Documentado',
+  rol: 'Supervisión y seguimiento de obra',
+  descripcion:
+    'Registro profesional del proceso de obra, seguimiento operativo y documentación visual del avance constructivo.',
+  responsabilidades: [
+    'Coordinación operativa',
+    'Control de calidad',
+    'Seguimiento de avances',
+  ],
+  resultado: 'Registro visual organizado del proceso constructivo.',
+}
+
 const projectsByFolder = worksContext.keys().reduce((folders, assetPath) => {
   const pathParts = assetPath.replace(/^\.\//, '').split('/')
 
@@ -69,6 +119,8 @@ const ProjectsData = Object.entries(projectsByFolder)
       ...videos.map((video) => ({ ...video, type: 'video' })),
     ]
 
+    const projectText = projectTextByFolder[folderName] || defaultProjectText
+
     return {
       id: folderName,
       name: folderName,
@@ -78,16 +130,20 @@ const ProjectsData = Object.entries(projectsByFolder)
       photos,
       videos,
       order: index + 1,
-      concept: 'Registro fotográfico y audiovisual del trabajo realizado.',
-      explain:
-        'Proyecto cargado automáticamente desde los archivos disponibles en su carpeta de trabajo.',
-      role: 'Supervisión y seguimiento de obra',
-      result: 'Avance documentado con material visual del proceso constructivo.',
-      responsibilities: [
-        'Coordinación operativa de tareas.',
-        'Control de calidad en obra.',
-        'Seguimiento del avance de los trabajos.',
-      ],
+
+      tipo: projectText.tipo,
+      ubicacion: projectText.ubicacion,
+      estado: projectText.estado,
+      rol: projectText.rol,
+      descripcion: projectText.descripcion,
+      responsabilidades: projectText.responsabilidades,
+      resultado: projectText.resultado,
+
+      concept: projectText.descripcion,
+      explain: projectText.descripcion,
+      role: projectText.rol,
+      result: projectText.resultado,
+      responsibilities: projectText.responsabilidades,
     }
   })
 
