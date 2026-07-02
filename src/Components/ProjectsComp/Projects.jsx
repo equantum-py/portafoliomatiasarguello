@@ -27,12 +27,6 @@ const Projects = () => {
               <span className="case-index">{String(index + 1).padStart(2, '0')}</span>
               <p className="case-kicker">Case Study</p>
               <h3>{project.name}</h3>
-              <p className="case-description">{project.concept}</p>
-            </div>
-
-            <div className="case-role">
-              <span>Rol desempeñado</span>
-              <p>{project.role}</p>
             </div>
 
             <Link to={`/proyecto/${project.slug}`} className="case-button">
