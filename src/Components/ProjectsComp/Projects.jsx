@@ -10,7 +10,10 @@ const Projects = () => {
   return (
     <div className="case-studies" aria-label="Proyectos y trabajos destacados">
       {ProjectsData.map((project, index) => {
-        const mainResponsibilities = project.responsabilidades?.slice(0, 3) || project.responsibilities?.slice(0, 3) || []
+        const mainResponsibilities =
+          project.responsabilidades?.slice(0, 3) ||
+          project.responsibilities?.slice(0, 3) ||
+          []
 
         return (
           <motion.article
@@ -21,14 +24,20 @@ const Projects = () => {
             className="case-card"
             key={project.id}
           >
-            <Link to={`/proyecto/${project.slug}`} className="case-image" aria-label={`Ver proyecto ${project.name}`}>
+            <Link
+              to={`/proyecto/${project.slug}`}
+              className="case-image"
+              aria-label={`Ver proyecto ${project.name}`}
+            >
               <img src={project.cover} alt={project.name} loading="lazy" />
             </Link>
 
             <div className="case-content">
               <div className="case-heading">
                 <div className="case-topline">
-                  <span className="case-index">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="case-index">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <p className="case-kicker">Case Study</p>
                 </div>
 
@@ -52,7 +61,10 @@ const Projects = () => {
               </div>
 
               <p className="case-description">
-                {project.descripcion || project.description || project.concept || 'Registro visual y seguimiento profesional del avance de obra.'}
+                {project.descripcion ||
+                  project.description ||
+                  project.concept ||
+                  'Registro visual y seguimiento profesional del avance de obra.'}
               </p>
 
               {mainResponsibilities.length > 0 && (

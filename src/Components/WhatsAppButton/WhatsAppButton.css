@@ -34,3 +34,27 @@
     height: 56px;
   }
 }
+
+@media (max-width: 480px) {
+  .whatsapp-button {
+    bottom: 18px;
+    box-shadow: 0 12px 28px rgba(27, 94, 117, 0.28);
+    height: 54px;
+    right: 18px;
+    width: 54px;
+  }
+
+  .whatsapp-button svg {
+    height: 29px;
+    width: 29px;
+  }
+}
+
+@media (max-width: 360px) {
+  .whatsapp-button {
+    bottom: 14px;
+    height: 50px;
+    right: 14px;
+    width: 50px;
+  }
+}

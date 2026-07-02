@@ -754,3 +754,238 @@
     padding: 7px 12px;
   }
 }
+
+@media (max-width: 768px) {
+  .portfolio-home {
+    background-size: auto, 44px 44px, 44px 44px;
+  }
+
+  .hero-section {
+    gap: 40px;
+    min-height: auto;
+    padding-bottom: 64px;
+    padding-top: 64px;
+  }
+
+  .hero-content h1 {
+    margin-bottom: 18px;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 20px;
+  }
+
+  .hero-description + .hero-description {
+    margin-top: 12px;
+  }
+
+  .hero-actions,
+  .contact-actions {
+    gap: 14px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    border-radius: 12px;
+    min-height: 52px;
+    padding: 14px 18px;
+  }
+
+  .hero-photo-card {
+    margin-top: 6px;
+  }
+
+  .hero-photo-card img {
+    max-height: 560px;
+  }
+
+  .section {
+    padding-bottom: 64px;
+    padding-top: 64px;
+  }
+
+  .about-intro,
+  .education-work-section,
+  .skills-tools-section {
+    gap: 30px;
+  }
+
+  .section-heading {
+    margin-bottom: 8px;
+  }
+
+  .section-heading h2,
+  .current-work-card h2,
+  .contact-section h2 {
+    margin-bottom: 18px;
+  }
+
+  .pillar-card,
+  .education-card,
+  .current-work-card,
+  .skills-panel,
+  .tools-panel {
+    border-radius: 18px;
+    padding: 26px 22px;
+  }
+
+  .profile-pillars,
+  .skills-grid {
+    gap: 16px;
+  }
+
+  .skill-card {
+    align-items: flex-start;
+    background: rgba(8, 57, 77, 0.035);
+    border-radius: 14px;
+    grid-template-columns: 34px 1fr;
+    padding: 14px;
+  }
+
+  .tools-panel div {
+    gap: 10px;
+  }
+
+  .tools-panel span {
+    background: rgba(8, 57, 77, 0.06);
+    border-radius: 999px;
+    padding: 9px 12px;
+  }
+
+  .contact-section {
+    border-radius: 20px;
+    gap: 22px;
+    margin-bottom: 64px;
+    padding: 32px 24px;
+  }
+
+  .contact-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    gap: 34px;
+    padding: 56px 18px 60px;
+  }
+
+  .section {
+    padding: 54px 18px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.28rem, 12vw, 3.2rem);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .hero-description,
+  .section-heading p,
+  .current-work-card p,
+  .current-work-card li,
+  .skill-card p,
+  .contact-section p,
+  .timeline-item p {
+    font-size: 0.96rem;
+    line-height: 1.68;
+  }
+
+  .hero-actions {
+    margin-top: 28px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    font-size: 0.92rem;
+    min-height: 54px;
+  }
+
+  .hero-photo-card {
+    margin-top: 10px;
+  }
+
+  .hero-photo-card img {
+    border-radius: 20px;
+  }
+
+  .profile-pillars,
+  .skills-grid {
+    gap: 14px;
+  }
+
+  .pillar-card,
+  .education-card,
+  .current-work-card,
+  .skills-panel,
+  .tools-panel {
+    padding: 24px 18px;
+  }
+
+  .education-work-section,
+  .skills-tools-section {
+    gap: 24px;
+  }
+
+  .timeline {
+    gap: 22px;
+  }
+
+  .current-work-card ul {
+    gap: 11px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section {
+    margin-left: 18px;
+    margin-right: 18px;
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section,
+  .section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-section {
+    padding-top: 50px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 11vw, 2.7rem);
+  }
+
+  .primary-button,
+  .secondary-button {
+    font-size: 0.86rem;
+    min-height: 50px;
+    padding: 13px 14px;
+  }
+
+  .pillar-card,
+  .education-card,
+  .current-work-card,
+  .skills-panel,
+  .tools-panel {
+    padding: 22px 16px;
+  }
+
+  .contact-section {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 26px 18px;
+  }
+}
