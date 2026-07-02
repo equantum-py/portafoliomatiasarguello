@@ -1,64 +1,74 @@
 const worksContext = require.context('./Assets/Trabajos', true, /\.(png|jpe?g|webp|avif|gif|mp4|webm|mov)$/i)
 
-const imageExtensions = /\.(png|jpe?g|webp|avif|gif)$/i
-const videoExtensions = /\.(mp4|webm|mov)$/i
+const IMAGE_FILE = /\.(png|jpe?g|webp|avif|gif)$/i
+const VIDEO_FILE = /\.(mp4|webm|mov)$/i
+const COVER_FILE = /^00-portada\.(png|jpe?g|webp|avif|gif)$/i
+const collator = new Intl.Collator('es', { numeric: true, sensitivity: 'base' })
 
-// Agrupar archivos por carpeta
-const filesByFolder = {}
+const projectsByFolder = worksContext.keys().reduce((folders, assetPath) => {
+  const pathParts = assetPath.replace(/^\.\//, '').split('/')
 
-worksContext.keys().forEach((key) => {
-  // Extraer la carpeta (primer nivel después de ./)
-  const parts = key.replace('./', '').split('/')
-  
-  // Ignorar archivos directamente en src/Assets/Trabajos/
-  // Solo procesar archivos dentro de subcarpetas
-  if (parts.length < 2) return
-  
-  const folderName = parts[0]
-  const fileName = parts[parts.length - 1]
-  
-  if (!filesByFolder[folderName]) {
-    filesByFolder[folderName] = {
-      images: [],
+  if (pathParts.length < 2) {
+    return folders
+  }
+
+  const folderName = pathParts[0]
+  const fileName = pathParts[pathParts.length - 1]
+  const asset = {
+    src: worksContext(assetPath),
+    name: fileName,
+  }
+
+  if (!folders[folderName]) {
+    folders[folderName] = {
+      photos: [],
       videos: [],
     }
   }
-  
-  const fileData = {
-    src: worksContext(key),
-    name: fileName,
-  }
-  
-  if (imageExtensions.test(fileName)) {
-    filesByFolder[folderName].images.push(fileData)
-  } else if (videoExtensions.test(fileName)) {
-    filesByFolder[folderName].videos.push(fileData)
-  }
-})
 
-// Ordenar imágenes y videos alfabéticamente en cada carpeta
-Object.values(filesByFolder).forEach((folder) => {
-  folder.images.sort((a, b) => a.name.localeCompare(b.name, 'es', { numeric: true, sensitivity: 'base' }))
-  folder.videos.sort((a, b) => a.name.localeCompare(b.name, 'es', { numeric: true, sensitivity: 'base' }))
-})
-
-// Crear proyectos automáticamente
-const ProjectsData = Object.entries(filesByFolder).map(([folderName, { images, videos }], index) => {
-  const allMedia = [
-    ...images.map((img) => ({ ...img, type: 'image' })),
-    ...videos.map((vid) => ({ ...vid, type: 'video' })),
-  ]
-  
-  return {
-    id: index + 1,
-    name: folderName,
-    slug: encodeURIComponent(folderName),
-    media: allMedia,
-    photos: images,
-    videos,
-    cover: images[0]?.src || videos[0]?.src,
+  if (IMAGE_FILE.test(fileName)) {
+    folders[folderName].photos.push(asset)
   }
-})
+
+  if (VIDEO_FILE.test(fileName)) {
+    folders[folderName].videos.push(asset)
+  }
+
+  return folders
+}, {})
+
+const ProjectsData = Object.entries(projectsByFolder)
+  .sort(([firstFolder], [secondFolder]) => collator.compare(firstFolder, secondFolder))
+  .map(([folderName, assets], index) => {
+    const photos = assets.photos.sort((firstAsset, secondAsset) => collator.compare(firstAsset.name, secondAsset.name))
+    const videos = assets.videos.sort((firstAsset, secondAsset) => collator.compare(firstAsset.name, secondAsset.name))
+    const cover = photos.find((photo) => COVER_FILE.test(photo.name))?.src || photos[0]?.src || ''
+
+    const media = [
+      ...photos.map((photo) => ({ ...photo, type: 'image' })),
+      ...videos.map((video) => ({ ...video, type: 'video' })),
+    ]
+
+    return {
+      id: folderName,
+      name: folderName,
+      slug: encodeURIComponent(folderName),
+      cover,
+      media,
+      photos,
+      videos,
+      order: index + 1,
+      concept: 'Registro fotográfico y audiovisual del trabajo realizado.',
+      explain: 'Proyecto cargado automáticamente desde los archivos disponibles en su carpeta de trabajo.',
+      role: 'Supervisión y seguimiento de obra',
+      result: 'Avance documentado con material visual del proceso constructivo.',
+      responsibilities: [
+        'Coordinación operativa de tareas.',
+        'Control de calidad en obra.',
+        'Seguimiento del avance de los trabajos.',
+      ],
+    }
+  })
 
 export { ProjectsData }
 export default ProjectsData
