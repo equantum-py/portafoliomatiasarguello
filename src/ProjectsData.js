@@ -1,8 +1,17 @@
-const worksContext = require.context('./Assets/Trabajos', true, /\.(png|jpe?g|webp|avif|gif|mp4|webm|mov)$/i)
+const worksContext = require.context(
+  './Assets/Trabajos',
+  true,
+  /\.(png|jpe?g|webp|avif|gif|mp4|webm|mov)$/i
+)
 
 const IMAGE_FILE = /\.(png|jpe?g|webp|avif|gif)$/i
 const VIDEO_FILE = /\.(mp4|webm|mov)$/i
-const collator = new Intl.Collator('es', { numeric: true, sensitivity: 'base' })
+const COVER_FILE = /^00-portada\.(png|jpe?g|webp|avif|gif)$/i
+
+const collator = new Intl.Collator('es', {
+  numeric: true,
+  sensitivity: 'base',
+})
 
 const projectsByFolder = worksContext.keys().reduce((folders, assetPath) => {
   const pathParts = assetPath.replace(/^\.\//, '').split('/')
@@ -13,6 +22,7 @@ const projectsByFolder = worksContext.keys().reduce((folders, assetPath) => {
 
   const folderName = pathParts[0]
   const fileName = pathParts[pathParts.length - 1]
+
   const asset = {
     src: worksContext(assetPath),
     name: fileName,
@@ -37,10 +47,22 @@ const projectsByFolder = worksContext.keys().reduce((folders, assetPath) => {
 }, {})
 
 const ProjectsData = Object.entries(projectsByFolder)
-  .sort(([firstFolder], [secondFolder]) => collator.compare(firstFolder, secondFolder))
+  .sort(([firstFolder], [secondFolder]) =>
+    collator.compare(firstFolder, secondFolder)
+  )
   .map(([folderName, assets], index) => {
-    const photos = assets.photos.sort((firstAsset, secondAsset) => collator.compare(firstAsset.name, secondAsset.name))
-    const videos = assets.videos.sort((firstAsset, secondAsset) => collator.compare(firstAsset.name, secondAsset.name))
+    const photos = assets.photos.sort((firstAsset, secondAsset) =>
+      collator.compare(firstAsset.name, secondAsset.name)
+    )
+
+    const videos = assets.videos.sort((firstAsset, secondAsset) =>
+      collator.compare(firstAsset.name, secondAsset.name)
+    )
+
+    const cover =
+      photos.find((photo) => COVER_FILE.test(photo.name))?.src ||
+      photos[0]?.src ||
+      ''
 
     const media = [
       ...photos.map((photo) => ({ ...photo, type: 'image' })),
@@ -51,13 +73,14 @@ const ProjectsData = Object.entries(projectsByFolder)
       id: folderName,
       name: folderName,
       slug: encodeURIComponent(folderName),
-      cover: photos[0]?.src || '',
+      cover,
       media,
       photos,
       videos,
       order: index + 1,
       concept: 'Registro fotográfico y audiovisual del trabajo realizado.',
-      explain: 'Proyecto cargado automáticamente desde los archivos disponibles en su carpeta de trabajo.',
+      explain:
+        'Proyecto cargado automáticamente desde los archivos disponibles en su carpeta de trabajo.',
       role: 'Supervisión y seguimiento de obra',
       result: 'Avance documentado con material visual del proceso constructivo.',
       responsibilities: [
