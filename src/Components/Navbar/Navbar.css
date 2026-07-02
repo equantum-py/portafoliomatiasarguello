@@ -62,3 +62,50 @@
     gap: 14px 18px;
   }
 }
+
+@media (max-width: 768px) {
+  .navbar-container {
+    align-items: stretch;
+    gap: 12px;
+    min-height: auto;
+    padding: 12px 18px 14px;
+  }
+
+  .navbar-logo {
+    font-size: 1.05rem;
+    line-height: 1.1;
+  }
+
+  .nav-menu {
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 0 4px;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    background: rgba(27, 94, 117, 0.06);
+    border: 1px solid rgba(27, 94, 117, 0.08);
+    border-radius: 999px;
+    flex: 0 0 auto;
+    font-size: 0.78rem;
+    padding: 8px 11px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 10px 14px 12px;
+  }
+
+  .nav-link {
+    font-size: 0.74rem;
+    padding: 7px 10px;
+  }
+}
